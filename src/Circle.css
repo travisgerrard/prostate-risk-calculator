@@ -1,0 +1,7 @@
+.circle {
+  transition: transform 0.3s;
+}
+
+.circle:hover {
+  transform: scale(1.2);
+}
