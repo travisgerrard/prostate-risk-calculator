@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/prostate-risk-calculator/static/css/main.78bb3800.css",
+    "main.js": "/prostate-risk-calculator/static/js/main.3e46b779.js",
+    "static/js/453.d2278854.chunk.js": "/prostate-risk-calculator/static/js/453.d2278854.chunk.js",
+    "index.html": "/prostate-risk-calculator/index.html",
+    "main.78bb3800.css.map": "/prostate-risk-calculator/static/css/main.78bb3800.css.map",
+    "main.3e46b779.js.map": "/prostate-risk-calculator/static/js/main.3e46b779.js.map",
+    "453.d2278854.chunk.js.map": "/prostate-risk-calculator/static/js/453.d2278854.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.78bb3800.css",
+    "static/js/main.3e46b779.js"
+  ]
+}
