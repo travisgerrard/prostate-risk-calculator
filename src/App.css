@@ -18,13 +18,43 @@ body {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Space between buttons */
 }
 
 .radio-buttons label {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align text with radio button */
   font-size: 16px;
   font-family: Arial, sans-serif;
   cursor: pointer;
+  position: relative;
+}
+
+.radio-buttons input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none; /* Safari-specific */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #192bc2;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  margin-right: 10px; /* Space between circle and text */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.radio-buttons input[type="radio"]:checked {
+  background-color: #192bc2;
+  transform: scale(1.1); /* Slightly enlarge when checked */
+}
+
+.radio-buttons input[type="radio"]:hover {
+  background-color: #0056b3; /* Change color on hover */
+}
+
+.radio-buttons input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #192bc2; /* Change label color when selected */
 }
 
 .main-content {
@@ -36,15 +66,18 @@ body {
   width: 100%;
 }
 
+/* Add transition for the grid */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(32, minmax(0, 1fr)); /* 32 columns */
-  width: 100%;
-  max-width: 640px; /* Limit grid size for larger screens */
-  min-height: 640px; /* Ensure stable grid size */
+  grid-template-columns: repeat(32, minmax(0, 1fr));
   gap: 2px;
-  aspect-ratio: 1; /* Keep grid square */
+  width: 100%;
+  max-width: 640px;
+  min-height: 640px;
+  aspect-ratio: 1;
+  transition: all 0.5s ease-in-out; /* Smooth transition for grid size */
 }
+
 
 @media (max-width: 768px) {
   .grid-container {
@@ -87,6 +120,9 @@ body {
 .legend {
   margin-left: 20px;
   text-align: left;
+  width: 250px; /* Fixed width to prevent resizing */
+  min-height: 100px; /* Optional: consistent height */
+  transition: opacity 0.3s ease-in-out; /* Smooth content change */
 }
 
 .legend-item {
@@ -96,8 +132,9 @@ body {
 }
 
 .legend-circle {
+  flex-shrink: 0; /* Prevents circles from shrinking */
   width: 20px;
-  height: 20px;
+  height: 20px; /* Ensures a perfect circle */
   border-radius: 50%;
   margin-right: 10px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -142,7 +179,7 @@ body {
   background-color: gray;
   border-radius: 50%;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); /* Inner shadow */
-  transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  transition: background-color 0.3s ease-in-out; /* Smooth color transition */
   aspect-ratio: 1; /* Ensure the grid stays square */
 }
 
@@ -189,3 +226,116 @@ input[type="radio"]:checked + label {
   color: #192bc2; /* Matches blue circle color */
 }
 
+.references {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.references h2 {
+  font-size: 18px;
+  color: #192bc2; /* Match app theme */
+  margin-bottom: 10px;
+}
+
+.references ol {
+  padding-left: 20px; /* Space for ordered list */
+}
+
+.references li {
+  margin-bottom: 10px;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  max-width: 600px; /* Limit width for larger screens */
+  width: 90%; /* Take up most of the screen on smaller devices */
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Add scrolling for long content */
+  max-height: 80vh; /* Ensure it fits within the viewport height */
+}
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Add padding to prevent edge cutoff */
+}
+
+.modal h2 {
+  font-size: 18px;
+  color: #192bc2;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modal ol {
+  padding-left: 20px;
+}
+
+
+.modal-button {
+  background-color: #192bc2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.modal-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 480px) {
+  .modal {
+    max-width: 95%; /* Almost full-width for small phones */
+    padding: 15px;
+  }
+
+  .modal h2 {
+    font-size: 16px; /* Slightly smaller title for mobile */
+  }
+
+  .modal button {
+    width: 100%; /* Full-width button for easy access on mobile */
+  }
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Slight slide-in effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Safari-specific fix for fading in */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .legend-item {
+      animation: none;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+  }
+}
